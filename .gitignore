@@ -4,3 +4,4 @@ node_modules
 dist
 json/database.js
 json/database-hidden.js
+dump.rdb

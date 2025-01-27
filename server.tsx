@@ -9,12 +9,7 @@ import middleware from "webpack-dev-middleware"
 import hot from "webpack-hot-middleware"
 import config from "./webpack.config"
 import dotenv from "dotenv"
-import React from "react"
-import App from "./App"
-import {renderToString} from "react-dom/server"
-import {StaticRouter as Router} from "react-router-dom"
 import dbFunctions from "./structures/DatabaseFunctions"
-import serverFunctions from "./structures/ServerFunctions"
 const __dirname = path.resolve()
 
 dotenv.config()

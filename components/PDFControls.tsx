@@ -263,7 +263,7 @@ const PDFControls: React.FunctionComponent<Props> = (props) => {
                 {!mobile ? <img className="pdf-controls-icon-small" src={hamburger} onClick={() => setShowThumbnails((prev: boolean) => !prev)}/> : null}
                 <div className="pdf-controls-page-container">
                     <span className="pdf-controls-page-text">Page:</span>
-                    <input className="pdf-controls-page-input" type="text" spellCheck={false} value={page} onChange={(event) => setPage(event.target.value)} onBlur={() => updatePage()}/>
+                    <input className="pdf-controls-page-input" type="text" spellCheck={false} value={page} onChange={(event) => setPage(event.target.value)} onBlur={() => updatePage()} onMouseEnter={() => setEnableDrag(false)}/>
                     <span className="pdf-controls-page-text">/ {numPagesFlag}</span>
                 </div>
                 <img className="pdf-controls-icon-mid" src={rightToLeft} onClick={() => changeHorizontal(true)}/>

@@ -1,12 +1,8 @@
 import React, {useContext, useEffect, useState} from "react"
 import {useHistory} from "react-router-dom"
-import {HashLink as Link} from "react-router-hash-link"
 import {EnableDragContext, SearchContext, SortContext, SearchFlagContext, GenreContext, ReverseContext, MobileContext} from "../Context"
 import functions from "../structures/Functions"
 import GridManga from "./GridManga"
-import pageLeft from "../assets/icons/pageLeft.png"
-import pageRight from "../assets/icons/pageRight.png"
-import database from "../json/database"
 import dbFunctions from "../structures/DatabaseFunctions"
 import "./styles/mangagrid.less"
 

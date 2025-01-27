@@ -793,6 +793,7 @@ export default class Functions {
 
     public static isLocalHost = () => {
         if (typeof window === "undefined") return false
-        return window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        return process.env.TESTING === "yes"
+        // return window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     }
 }
