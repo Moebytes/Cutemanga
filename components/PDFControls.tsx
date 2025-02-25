@@ -263,7 +263,7 @@ const PDFControls: React.FunctionComponent<Props> = (props) => {
                 {!mobile ? <img className="pdf-controls-icon-small" src={hamburger} onClick={() => setShowThumbnails((prev: boolean) => !prev)}/> : null}
                 <div className="pdf-controls-page-container">
                     <span className="pdf-controls-page-text">Page:</span>
-                    <input className="pdf-controls-page-input" type="text" spellCheck={false} value={page} onChange={(event) => setPage(event.target.value)} onBlur={() => updatePage()} onMouseEnter={() => setEnableDrag(false)}/>
+                    <input className="pdf-controls-page-input" type="number" spellCheck={false} value={page} onChange={(event) => setPage(event.target.value)} onBlur={() => updatePage()} onMouseEnter={() => setEnableDrag(false)}/>
                     <span className="pdf-controls-page-text">/ {numPagesFlag}</span>
                 </div>
                 <img className="pdf-controls-icon-mid" src={rightToLeft} onClick={() => changeHorizontal(true)}/>
@@ -273,7 +273,7 @@ const PDFControls: React.FunctionComponent<Props> = (props) => {
             <div className="pdf-controls-box">
                 <img className="pdf-controls-icon-small-alt" src={zoomOut} onClick={triggerZoomOut}/>
                 <img className="pdf-controls-icon-small" src={zoomIn} onClick={triggerZoomIn}/>
-                <input className="pdf-controls-zoom-input" type="text" spellCheck={false} value={zoom} onChange={(event) => setZoom(event.target.value)} onBlur={() => updateZoom()}/>
+                <input className="pdf-controls-zoom-input" type="number" spellCheck={false} value={zoom} onChange={(event) => setZoom(event.target.value)} onBlur={() => updateZoom()}/>
                 <img className="pdf-controls-icon-small" src={reset} onClick={() => setZoom("100%")} style={{height: "13px"}}/>
                 <img className="pdf-controls-icon-small" src={prevPage} onClick={triggerPrev}/>
                 <img className="pdf-controls-icon-small" src={nextPage} onClick={triggerNext}/>
