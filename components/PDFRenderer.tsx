@@ -21,13 +21,13 @@ const Placeholder = ({width}) => {
     return <div style={{width: width, height: height}}/>
 }
 
-const PDFPage = forwardRef(function PDFPage({visible, pageIndex, width, scale, id, style}: any, ref: any) {
+const PDFPage = forwardRef(function PDFPage({visible, pageIndex, width, scale, id, style, rootRef}: any, ref: any) {
     const placeholder = <Placeholder width={width}/>
   
     return (
         <div ref={ref} data-page-index={pageIndex} style={style}>
           {visible ? (
-            <WrappedPage width={width} pageNumber={pageIndex + 1} loading={placeholder} scale={scale} id={id}/>
+            <WrappedPage width={width} pageNumber={pageIndex + 1} loading={placeholder} scale={scale} id={id} rootRef={rootRef}/>
           ) : placeholder}
         </div>
       )
@@ -128,7 +128,7 @@ const PDFRenderer: React.FunctionComponent<Props> = (props) => {
     let observerOptions = {
         root: rootRef.current,
         rootMargin: horizontal ? `0px ${amount}px` : `${amount}px 0px`,
-        threshold: 0.0
+        threshold: 0.2
     }
 
     const observerCallback = (entries: any, io: any) => {
@@ -170,6 +170,7 @@ const PDFRenderer: React.FunctionComponent<Props> = (props) => {
         }
     }, [observer, pageRefsJA, pageRefsEN])
 
+    /*
     useEffect(() => {
         const elements = document.querySelectorAll("span")
         const mouseEnter = () => setEnableDrag(false)
@@ -184,7 +185,7 @@ const PDFRenderer: React.FunctionComponent<Props> = (props) => {
                 e.removeEventListener("mouseleave", mouseLeave)
             })
         }
-    })
+    })*/
 
 
     const onLoadSuccessJA = async (pdf: any) => {
@@ -305,16 +306,16 @@ const PDFRenderer: React.FunctionComponent<Props> = (props) => {
     }
 
     return (
-        <div className={`pdf-renderer drag ${horizontal ? "pdf-renderer-horizontal" : ""}`} ref={rootRef} style={{maxHeight: horizontal ? 773 : 1600}} onClick={((e) => e.currentTarget.focus())}>
+        <div className={`pdf-renderer drag ${horizontal ? "pdf-renderer-horizontal" : ""}`} ref={rootRef} style={{maxHeight: horizontal ? 773 : 1600, touchAction: horizontal ? "pan-x" : "pan-y"}} onClick={((e) => e.currentTarget.focus())}>
             {generateThumbnails()}
             <Document renderMode="svg" className={`pdf-document ${!showEn ? "hidden" : ""} ${horizontal ? "horizontal" : ""}`} file={enPDF} onLoadSuccess={onLoadSuccessEN} noData="" loading="" options={{disableAutoFetch: true, disableStream: true}}>
                 {visibilitiesEN.map((visible: boolean, index: number) => (
-                    <PDFPage id={id} className="pdf-page" ref={pageRefsEN[index]} key={`pageEN_${index + 1}`} pageIndex={index} visible={visible} width={getWidth()} scale={getScale()} style={{filter: invert ? "invert(1) grayscale(1) brightness(1.5)" : ""}}/>
+                    <PDFPage id={id} className="pdf-page" ref={pageRefsEN[index]} key={`pageEN_${index + 1}`} pageIndex={index} visible={visible} width={getWidth()} scale={getScale()} style={{filter: invert ? "invert(1) grayscale(1) brightness(1.5)" : ""}} rootRef={rootRef}/>
                 ))}
             </Document>
             <Document renderMode="svg" className={`pdf-document ${showEn ? "hidden" : ""} ${horizontal ? "horizontal" : ""}`} file={jaPDF} onLoadSuccess={onLoadSuccessJA} noData="" loading="" options={{disableAutoFetch: true, disableStream: true}}>
                 {visibilitiesJA.map((visible: boolean, index: number) => (
-                    <PDFPage id={id} className="pdf-page" ref={pageRefsJA[index]} key={`pageJA_${index + 1}`} pageIndex={index} visible={visible} width={getWidth()} scale={getScale()} style={{filter: invert ? "invert(1) grayscale(1) brightness(1.5)" : ""}}/>
+                    <PDFPage id={id} className="pdf-page" ref={pageRefsJA[index]} key={`pageJA_${index + 1}`} pageIndex={index} visible={visible} width={getWidth()} scale={getScale()} style={{filter: invert ? "invert(1) grayscale(1) brightness(1.5)" : ""}} rootRef={rootRef}/>
                 ))}
             </Document>
         </div>

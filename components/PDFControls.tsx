@@ -273,7 +273,7 @@ const PDFControls: React.FunctionComponent<Props> = (props) => {
             <div className="pdf-controls-box">
                 <img className="pdf-controls-icon-small-alt" src={zoomOut} onClick={triggerZoomOut}/>
                 <img className="pdf-controls-icon-small" src={zoomIn} onClick={triggerZoomIn}/>
-                <input className="pdf-controls-zoom-input" type="number" spellCheck={false} value={zoom} onChange={(event) => setZoom(event.target.value)} onBlur={() => updateZoom()}/>
+                <input className="pdf-controls-zoom-input" type="number" spellCheck={false} value={parseInt(zoom)} onChange={(event) => setZoom(event.target.value)} onBlur={() => updateZoom()}/>
                 <img className="pdf-controls-icon-small" src={reset} onClick={() => setZoom("100%")} style={{height: "13px"}}/>
                 <img className="pdf-controls-icon-small" src={prevPage} onClick={triggerPrev}/>
                 <img className="pdf-controls-icon-small" src={nextPage} onClick={triggerNext}/>
