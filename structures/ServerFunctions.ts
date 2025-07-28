@@ -1,4 +1,4 @@
-import database, {genres} from "../json/database"
+import database, {genres} from "../json/database.js"
 import S3 from "aws-sdk/clients/s3"
 
 const s3 = new S3({region: "us-east-1", credentials: {

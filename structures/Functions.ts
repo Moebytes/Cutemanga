@@ -4,7 +4,7 @@ import path from "path"
 import axios from "axios"
 import fileType from "magic-bytes.js"
 import gifFrames from "gif-frames"
-import {hexToRgb, Color, Solver} from "./Color"
+import {hexToRgb, Color, Solver} from "./Color.ts"
 
 let newScrollY = 0
 let lastScrollTop = 0
@@ -793,7 +793,6 @@ export default class Functions {
 
     public static isLocalHost = () => {
         if (typeof window === "undefined") return false
-        return process.env.TESTING === "yes"
-        // return window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        return window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     }
 }

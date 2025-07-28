@@ -1,6 +1,6 @@
-import database, {genres} from "../json/database"
-import hiddenDatabase from "../json/database-hidden"
-import functions from "./Functions"
+import database, {genres} from "../json/database.js"
+import hiddenDatabase from "../json/database-hidden.js"
+import functions from "./Functions.ts"
 import fs from "fs"
 import path from "path"
 
