@@ -54,4 +54,4 @@ website.
 To load files from your local hard drive edit the pathname for the route `/Manga/*` in `server.tsx`.
 
 ### Anime Site
-- [Cuteanime.moe](https://github.com/Moebits/Cuteanime.moe)
+- [Cuteanime.moe](https://github.com/Moebytes/Cuteanime.moe)
